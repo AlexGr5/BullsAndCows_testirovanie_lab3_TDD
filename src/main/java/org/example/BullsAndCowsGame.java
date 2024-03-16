@@ -120,8 +120,17 @@ public class BullsAndCowsGame {
         while (!gameWon) {
             System.out.print("Enter your guess: ");
             String guess = scanner.nextLine().trim();
+            if (guess.equalsIgnoreCase("exit")) {
+                System.out.println("The secret number was: " + Arrays.toString(secretNumber));
+                break;
+            }
 
             int[] guessArray = convertToIntArray(guess);
+            if (guessArray.length != numberLength) {
+                System.out.println("Invalid guess length. Please enter a " + numberLength + "-digit number.");
+                continue;
+            }
+
             int[] result = getResult(guessArray);
             if (result[0] == numberLength) {
                 gameWon = true;
