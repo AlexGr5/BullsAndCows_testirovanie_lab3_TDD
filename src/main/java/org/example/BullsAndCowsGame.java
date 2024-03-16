@@ -85,4 +85,23 @@ public class BullsAndCowsGame {
         this.secretNumber = secretNumber;
     }
 
+    public int[] getResult(int[] guess) {
+        int bulls = 0;
+        int cows = 0;
+
+        for (int i = 0; i < guess.length; i++) {
+            if (guess[i] == secretNumber[i]) {
+                bulls++;
+            } else {
+                for (int j = 0; j < secretNumber.length; j++) {
+                    if (guess[i] == secretNumber[j]) {
+                        cows++;
+                        break;
+                    }
+                }
+            }
+        }
+        return new int[]{bulls, cows};
+    }
+
 }
