@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -84,5 +85,20 @@ public class testBullsAndCowsGame {
         for (int digit : secretNumber) {
             assertTrue(digit >= 0 && digit <= 9);
         }
+    }
+
+    @Test
+    @DisplayName("Получение Быков и Коров на входные данные")
+    public void testGetResult() {
+        int[] secretNumber = {1, 2, 3, 4};
+        int[] guess1 = {1, 2, 3, 4}; // 4 bulls
+        int[] guess2 = {4, 3, 2, 1}; // 0 bulls, 4 cows
+        int[] guess3 = {5, 6, 7, 8}; // 0 bulls, 0 cows
+        int[] guess4 = {1, 3, 2, 5}; // 2 bulls, 1 cows
+        game.setSecretNumber(secretNumber);
+        assertArrayEquals(new int[]{4, 0}, game.getResult(guess1));
+        assertArrayEquals(new int[]{0, 4}, game.getResult(guess2));
+        assertArrayEquals(new int[]{0, 0}, game.getResult(guess3));
+        assertArrayEquals(new int[]{1, 2}, game.getResult(guess4));
     }
 }
