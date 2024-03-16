@@ -35,4 +35,37 @@ public class BullsAndCowsGame {
 
         return guess;
     }
+
+    public int[] generateGuessNumber(int length) {
+        int i, j;
+        int tmp = 0;
+        int fl;
+        int count;
+        int[] number = new int[length];
+
+        for (i = 0; i < length; i++) {
+            if (i == 0) {
+                tmp = (int) (1 + Math.random() * 9);
+            }
+            else {
+                fl = 1;
+                tmp = (int) (Math.random() * 10);
+                while (fl == 1) {
+                    count = 0;
+                    for (j = 0; j < i; j++) {
+                        if ((number[j]) == tmp) {
+                            count++;
+                        }
+                    }
+                    if (count > 0)
+                        tmp = (int) (Math.random() * 10);
+                    else
+                        fl = 0;
+                }
+            }
+            number[i] = tmp;
+        }
+
+        return number;
+    }
 }

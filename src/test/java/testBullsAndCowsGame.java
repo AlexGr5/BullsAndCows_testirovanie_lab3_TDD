@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class testBullsAndCowsGame {
 
@@ -72,6 +73,16 @@ public class testBullsAndCowsGame {
         } finally {
             // Восстанавливаем оригинальный System.in после завершения работы
             System.setIn(originalSystemIn);
+        }
+    }
+
+    @Test
+    @DisplayName("Получение случайного не повторяющегося набора цифр длинной 4")
+    public void testGenerateSecretNumber() {
+        int[] secretNumber = game.generateGuessNumber(4);
+        assertEquals(4, secretNumber.length);
+        for (int digit : secretNumber) {
+            assertTrue(digit >= 0 && digit <= 9);
         }
     }
 }
