@@ -104,4 +104,8 @@ public class BullsAndCowsGame {
         return new int[]{bulls, cows};
     }
 
+    public int[] convertToIntArray(String number) {
+        return number.chars().map(Character::getNumericValue).toArray();
+    }
+
 }
