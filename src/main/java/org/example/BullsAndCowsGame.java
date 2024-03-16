@@ -145,4 +145,9 @@ public class BullsAndCowsGame {
         return exitResult;
     }
 
+    public static void main(String[] args) {
+        BullsAndCowsGame game = new BullsAndCowsGame(); // Change the argument to set the length of the secret number
+        game.play();
+    }
+
 }
