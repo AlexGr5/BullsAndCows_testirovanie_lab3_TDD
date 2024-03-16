@@ -49,4 +49,29 @@ public class testBullsAndCowsGame {
             System.setIn(originalSystemIn);
         }
     }
+
+    @Test
+    @DisplayName("Неправильный ввод уровня сложности с первого раза")
+    public void testUnCorrectChoiceLevel() {
+        // Создаем строку, которую мы хотим положить в поток ввода
+        String inputString = "1\n3";
+
+        // Создаем объект ByteArrayInputStream с использованием нашей строки
+        InputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
+
+        // Сохраняем стандартный поток ввода
+        InputStream originalSystemIn = System.in;
+
+        try {
+            // Устанавливаем наш созданный поток в качестве текущего System.in
+            System.setIn(inputStream);
+
+            // Теперь, когда вы вызываете Scanner(System.in), он будет читать из нашего потока ByteArrayInputStream
+            assertEquals(3, game.choiceLevel());
+
+        } finally {
+            // Восстанавливаем оригинальный System.in после завершения работы
+            System.setIn(originalSystemIn);
+        }
+    }
 }
