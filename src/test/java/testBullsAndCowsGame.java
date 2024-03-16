@@ -101,4 +101,13 @@ public class testBullsAndCowsGame {
         assertArrayEquals(new int[]{0, 0}, game.getResult(guess3));
         assertArrayEquals(new int[]{1, 2}, game.getResult(guess4));
     }
+
+    @Test
+    @DisplayName("Преобразования строки с цифрами в массив цифр")
+    public void testConvertToIntArray() {
+        String number = "1234";
+        int[] intArray = game.convertToIntArray(number);
+        int[] expectedArray = {1, 2, 3, 4};
+        assertArrayEquals(expectedArray, intArray);
+    }
 }
