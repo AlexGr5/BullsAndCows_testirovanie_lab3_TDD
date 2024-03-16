@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BullsAndCowsGame {
@@ -106,6 +107,33 @@ public class BullsAndCowsGame {
 
     public int[] convertToIntArray(String number) {
         return number.chars().map(Character::getNumericValue).toArray();
+    }
+
+    public boolean play() {
+        boolean exitResult = false;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to Bulls and Cows game!");
+        System.out.println("Try to guess the " + numberLength + "-digit number.");
+        System.out.println("Type 'exit' to quit the game.");
+
+        while (!gameWon) {
+            System.out.print("Enter your guess: ");
+            String guess = scanner.nextLine().trim();
+
+            int[] guessArray = convertToIntArray(guess);
+            int[] result = getResult(guessArray);
+            if (result[0] == numberLength) {
+                gameWon = true;
+                exitResult = true;
+                System.out.println("Congratulations! You've guessed the secret number: " + Arrays.toString(secretNumber));
+            } else {
+                System.out.println("Bulls: " + result[0] + ", Cows: " + result[1]);
+            }
+        }
+        scanner.close();
+
+        return exitResult;
     }
 
 }
