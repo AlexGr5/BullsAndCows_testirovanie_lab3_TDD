@@ -137,4 +137,31 @@ public class testBullsAndCowsGame {
             System.setIn(originalSystemIn);
         }
     }
+
+    @Test
+    @DisplayName("Много попыток для победы")
+    public void testLongPlay() {
+        // Создаем строку, которую мы хотим положить в поток ввода
+        String inputString = "3456\n6789\n1234";
+
+        // Создаем объект ByteArrayInputStream с использованием нашей строки
+        InputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
+
+        // Сохраняем стандартный поток ввода
+        InputStream originalSystemIn = System.in;
+
+        try {
+            // Устанавливаем наш созданный поток в качестве текущего System.in
+            System.setIn(inputStream);
+
+            int[] secretNumber = {1, 2, 3, 4};
+            game.setSecretNumber(secretNumber);
+            // Теперь, когда вы вызываете Scanner(System.in), он будет читать из нашего потока ByteArrayInputStream
+            assertEquals(true, game.play());
+
+        } finally {
+            // Восстанавливаем оригинальный System.in после завершения работы
+            System.setIn(originalSystemIn);
+        }
+    }
 }
