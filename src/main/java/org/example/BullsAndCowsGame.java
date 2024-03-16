@@ -9,7 +9,15 @@ public class BullsAndCowsGame {
     private boolean gameWon;
 
     public BullsAndCowsGame(int numberLength) {
+        this.secretNumber = generateGuessNumber(numberLength);
+        this.numberLength = numberLength;
+        this.gameWon = false;
+    }
 
+    public BullsAndCowsGame() {
+        this.secretNumber = generateGuessNumber(choiceLevel());
+        this.numberLength = secretNumber.length;
+        this.gameWon = false;
     }
 
     public int choiceLevel() {
