@@ -164,4 +164,29 @@ public class testBullsAndCowsGame {
             System.setIn(originalSystemIn);
         }
     }
+
+    @Test
+    @DisplayName("Выход из игры")
+    public void testExitPlay() {
+        // Создаем строку, которую мы хотим положить в поток ввода
+        String inputString = "exit";
+
+        // Создаем объект ByteArrayInputStream с использованием нашей строки
+        InputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
+
+        // Сохраняем стандартный поток ввода
+        InputStream originalSystemIn = System.in;
+
+        try {
+            // Устанавливаем наш созданный поток в качестве текущего System.in
+            System.setIn(inputStream);
+
+            // Теперь, когда вы вызываете Scanner(System.in), он будет читать из нашего потока ByteArrayInputStream
+            assertEquals(false, game.play());
+
+        } finally {
+            // Восстанавливаем оригинальный System.in после завершения работы
+            System.setIn(originalSystemIn);
+        }
+    }
 }
