@@ -76,4 +76,13 @@ public class BullsAndCowsGame {
 
         return number;
     }
+
+    public int[] getSecretNumber() {
+        return secretNumber;
+    }
+
+    public void setSecretNumber(int[] secretNumber) {
+        this.secretNumber = secretNumber;
+    }
+
 }
