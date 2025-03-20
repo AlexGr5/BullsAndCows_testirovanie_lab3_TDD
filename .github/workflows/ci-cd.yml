@@ -10,10 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-
     permissions:
       contents: write  # Разрешение на запись в репозиторий
-
 
     steps:
       - name: Checkout code
