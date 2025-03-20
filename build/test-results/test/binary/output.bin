@@ -1,0 +1,38 @@
+!Welcome to Bulls and Cows game!
+"Try to guess the 4-digit number.
+Type 'exit' to quit the game.
+7Enter your guess: The secret number was: [6, 4, 2, 0]
+!Welcome to Bulls and Cows game!
+"Try to guess the 4-digit number.
+Type 'exit' to quit the game.
+%Enter your guess: Bulls: 0, Cows: 2
+%Enter your guess: Bulls: 0, Cows: 0
+SEnter your guess: Congratulations! You've guessed the secret number: [1, 2, 3, 4]
+!Welcome to Bulls and Cows game!
+"Try to guess the 4-digit number.
+Type 'exit' to quit the game.
+SEnter your guess: Congratulations! You've guessed the secret number: [1, 2, 3, 4]
+
+2Difficulty level (length of the guessed number):
+3 - Easily
+4 - Normal
+
+5 - Hard
+6 - Unreal
+Select number: 
+%Input error! Choice correct number!
+
+2Difficulty level (length of the guessed number):
+3 - Easily
+4 - Normal
+
+5 - Hard
+6 - Unreal
+Select number: 
+2Difficulty level (length of the guessed number):
+3 - Easily
+4 - Normal
+
+5 - Hard
+6 - Unreal
+Select number: 

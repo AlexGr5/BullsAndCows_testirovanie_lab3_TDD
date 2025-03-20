@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testBullsAndCowsGame" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-03-20T18:46:22" hostname="COMP3" time="0.028">
+  <properties/>
+  <testcase name="Выход из игры" classname="testBullsAndCowsGame" time="0.012"/>
+  <testcase name="Много попыток для победы" classname="testBullsAndCowsGame" time="0.005"/>
+  <testcase name="Правильный ввод для победы" classname="testBullsAndCowsGame" time="0.001"/>
+  <testcase name="Наличие класса" classname="testBullsAndCowsGame" time="0.001"/>
+  <testcase name="Преобразования строки с цифрами в массив цифр" classname="testBullsAndCowsGame" time="0.001"/>
+  <testcase name="Неправильный ввод уровня сложности с первого раза" classname="testBullsAndCowsGame" time="0.002"/>
+  <testcase name="Правильный ввод уровня сложности" classname="testBullsAndCowsGame" time="0.002"/>
+  <testcase name="Получение Быков и Коров на входные данные" classname="testBullsAndCowsGame" time="0.0"/>
+  <testcase name="Получение случайного не повторяющегося набора цифр длинной 4" classname="testBullsAndCowsGame" time="0.0"/>
+  <system-out><![CDATA[Welcome to Bulls and Cows game!
+Try to guess the 4-digit number.
+Type 'exit' to quit the game.
+Enter your guess: The secret number was: [6, 4, 2, 0]
+Welcome to Bulls and Cows game!
+Try to guess the 4-digit number.
+Type 'exit' to quit the game.
+Enter your guess: Bulls: 0, Cows: 2
+Enter your guess: Bulls: 0, Cows: 0
+Enter your guess: Congratulations! You've guessed the secret number: [1, 2, 3, 4]
+Welcome to Bulls and Cows game!
+Try to guess the 4-digit number.
+Type 'exit' to quit the game.
+Enter your guess: Congratulations! You've guessed the secret number: [1, 2, 3, 4]
+
+Difficulty level (length of the guessed number):
+3 - Easily
+4 - Normal
+5 - Hard
+6 - Unreal
+Select number: 
+Input error! Choice correct number!
+
+Difficulty level (length of the guessed number):
+3 - Easily
+4 - Normal
+5 - Hard
+6 - Unreal
+Select number: 
+Difficulty level (length of the guessed number):
+3 - Easily
+4 - Normal
+5 - Hard
+6 - Unreal
+Select number: ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
