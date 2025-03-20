@@ -49,14 +49,15 @@ jobs:
       - name: List files in build/libs
         run: ls -al build/libs
 
-      # Create a new tag before releasing
-      - name: Create Tag
+      # Create a new tag and push it
+      - name: Create Tag and Push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git tag v${{ github.run_number }}
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} v${{ github.run_number }}
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} --follow-tags
 
+      # Verify Tag Creation
       - name: Verify Tag Creation
         run: |
           git tag
@@ -69,4 +70,3 @@ jobs:
           files: build/libs/lab3_TDD-1.0-SNAPSHOT.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
