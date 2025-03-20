@@ -57,6 +57,9 @@ jobs:
         run: |
           git tag
 
+      - name: List files in build/libs
+        run: ls -al build/libs
+
       # Публикуем артефакт в GitHub Releases
       - name: Create GitHub Release
         id: create_release
