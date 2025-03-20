@@ -30,6 +30,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle
 
+      - name: Install Gradle
+        run: sudo apt-get update && sudo apt-get install -y gradle
+
       - name: Give permissions to gradlew
         run: chmod +x gradlew
 
@@ -39,6 +42,11 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-      # Если появится Dockerfile и захочешь публиковать:
-      # - name: Build Docker image
-      #   run: docker build -t bulls-and-cows-app .
+      # Публикуем артефакт в GitHub Releases
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
