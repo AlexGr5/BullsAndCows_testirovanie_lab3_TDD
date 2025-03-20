@@ -1,10 +1,10 @@
-name: Java CI with Gradle and Docker
+name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -30,16 +30,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle
 
+      - name: Install Gradle
+        run: sudo apt-get update && sudo apt-get install -y gradle
+
       - name: Build with Gradle
-        run: ./gradlew build
+        run: gradle build
 
       - name: Run tests
-        run: ./gradlew test
+        run: gradle test
 
-      - name: Build Docker image
-        run: docker build -t bulls-and-cows-app .
-
-      - name: Push Docker image to Docker Hub (опционально)
-        if: github.ref == 'refs/heads/main'
-        run: echo "Здесь можно настроить пуш в Docker Hub, если захочешь"
-
+      # Если появится Dockerfile и желание публиковать:
+      # - name: Build Docker image
+      #   run: docker build -t bulls-and-cows-app .
