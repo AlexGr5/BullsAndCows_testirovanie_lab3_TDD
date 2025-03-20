@@ -55,6 +55,10 @@ jobs:
           git tag v${{ github.run_number }}
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} v${{ github.run_number }}
 
+      - name: Verify Tag Creation
+        run: |
+          git tag
+
       # Публикуем артефакт в GitHub Releases
       - name: Create GitHub Release
         id: create_release
@@ -63,7 +67,3 @@ jobs:
           files: build/libs/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Verify Tag Creation
-        run: |
-          git tag
