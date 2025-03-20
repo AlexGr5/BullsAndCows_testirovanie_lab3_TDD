@@ -10,12 +10,20 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // Зависимости для JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.0'
+    // Добавление поддержки JUnit 4 (если ты будешь использовать старые тесты)
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.4.0'
 }
 
-test {
-    useJUnitPlatform()
+tasks.withType(Test) {
+    useJUnitPlatform()  // Указание использования платформы JUnit 5
+    testLogging {
+        exceptionFormat "full"  // Подробное отображение исключений
+        events "started", "skipped", "passed", "failed"  // Логирование всех событий теста
+        showStandardStreams true  // Отображение вывода стандартных потоков
+    }
 }
 
 jar {
