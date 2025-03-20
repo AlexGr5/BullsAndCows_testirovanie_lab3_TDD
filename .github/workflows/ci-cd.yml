@@ -45,6 +45,10 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
+      # Добавим вывод содержимого папки build/libs
+      - name: List files in build/libs
+        run: ls -al build/libs
+
       # Create a new tag before releasing
       - name: Create Tag
         run: |
@@ -56,9 +60,6 @@ jobs:
       - name: Verify Tag Creation
         run: |
           git tag
-
-      - name: List files in build/libs
-        run: ls -al build/libs
 
       # Публикуем артефакт в GitHub Releases
       - name: Create GitHub Release
