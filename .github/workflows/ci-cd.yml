@@ -44,11 +44,11 @@ jobs:
 
       # Create a new tag before releasing
       - name: Create Tag
-          run: |
-            git config user.name "github-actions"
-            git config user.email "github-actions@github.com"
-            git tag v${{ github.run_number }}
-            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} v${{ github.run_number }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag v${{ github.run_number }}
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} v${{ github.run_number }}
 
       # Публикуем артефакт в GitHub Releases
       - name: Create GitHub Release
