@@ -30,9 +30,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle
 
-      - name: Install Gradle
-        run: sudo apt-get update && sudo apt-get install -y gradle
-
       - name: Give permissions to gradlew
         run: chmod +x gradlew
 
@@ -40,8 +37,8 @@ jobs:
         run: ./gradlew build
 
       - name: Run tests
-        run: gradle test
+        run: ./gradlew test
 
-      # Если появится Dockerfile и желание публиковать:
+      # Если появится Dockerfile и захочешь публиковать:
       # - name: Build Docker image
       #   run: docker build -t bulls-and-cows-app .
