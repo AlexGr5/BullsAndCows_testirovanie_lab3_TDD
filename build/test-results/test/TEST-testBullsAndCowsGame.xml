@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="testBullsAndCowsGame" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-03-20T18:46:22" hostname="COMP3" time="0.028">
+<testsuite name="testBullsAndCowsGame" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-03-20T18:56:36" hostname="COMP3" time="0.028">
   <properties/>
-  <testcase name="Выход из игры" classname="testBullsAndCowsGame" time="0.012"/>
-  <testcase name="Много попыток для победы" classname="testBullsAndCowsGame" time="0.005"/>
-  <testcase name="Правильный ввод для победы" classname="testBullsAndCowsGame" time="0.001"/>
-  <testcase name="Наличие класса" classname="testBullsAndCowsGame" time="0.001"/>
-  <testcase name="Преобразования строки с цифрами в массив цифр" classname="testBullsAndCowsGame" time="0.001"/>
-  <testcase name="Неправильный ввод уровня сложности с первого раза" classname="testBullsAndCowsGame" time="0.002"/>
-  <testcase name="Правильный ввод уровня сложности" classname="testBullsAndCowsGame" time="0.002"/>
-  <testcase name="Получение Быков и Коров на входные данные" classname="testBullsAndCowsGame" time="0.0"/>
-  <testcase name="Получение случайного не повторяющегося набора цифр длинной 4" classname="testBullsAndCowsGame" time="0.0"/>
+  <testcase name="Р’С‹С…РѕРґ РёР· РёРіСЂС‹" classname="testBullsAndCowsGame" time="0.013"/>
+  <testcase name="РњРЅРѕРіРѕ РїРѕРїС‹С‚РѕРє РґР»СЏ РїРѕР±РµРґС‹" classname="testBullsAndCowsGame" time="0.004"/>
+  <testcase name="РџСЂР°РІРёР»СЊРЅС‹Р№ РІРІРѕРґ РґР»СЏ РїРѕР±РµРґС‹" classname="testBullsAndCowsGame" time="0.001"/>
+  <testcase name="РќР°Р»РёС‡РёРµ РєР»Р°СЃСЃР°" classname="testBullsAndCowsGame" time="0.001"/>
+  <testcase name="РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ СЃС‚СЂРѕРєРё СЃ С†РёС„СЂР°РјРё РІ РјР°СЃСЃРёРІ С†РёС„СЂ" classname="testBullsAndCowsGame" time="0.001"/>
+  <testcase name="РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІРІРѕРґ СѓСЂРѕРІРЅСЏ СЃР»РѕР¶РЅРѕСЃС‚Рё СЃ РїРµСЂРІРѕРіРѕ СЂР°Р·Р°" classname="testBullsAndCowsGame" time="0.002"/>
+  <testcase name="РџСЂР°РІРёР»СЊРЅС‹Р№ РІРІРѕРґ СѓСЂРѕРІРЅСЏ СЃР»РѕР¶РЅРѕСЃС‚Рё" classname="testBullsAndCowsGame" time="0.001"/>
+  <testcase name="РџРѕР»СѓС‡РµРЅРёРµ Р‘С‹РєРѕРІ Рё РљРѕСЂРѕРІ РЅР° РІС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ" classname="testBullsAndCowsGame" time="0.0"/>
+  <testcase name="РџРѕР»СѓС‡РµРЅРёРµ СЃР»СѓС‡Р°Р№РЅРѕРіРѕ РЅРµ РїРѕРІС‚РѕСЂСЏСЋС‰РµРіРѕСЃСЏ РЅР°Р±РѕСЂР° С†РёС„СЂ РґР»РёРЅРЅРѕР№ 4" classname="testBullsAndCowsGame" time="0.0"/>
   <system-out><![CDATA[Welcome to Bulls and Cows game!
 Try to guess the 4-digit number.
 Type 'exit' to quit the game.
-Enter your guess: The secret number was: [6, 4, 2, 0]
+Enter your guess: The secret number was: [6, 5, 4, 8]
 Welcome to Bulls and Cows game!
 Try to guess the 4-digit number.
 Type 'exit' to quit the game.
