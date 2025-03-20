@@ -57,10 +57,12 @@ jobs:
           git tag v${{ github.run_number }}
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} --follow-tags
 
-      # Verify Tag Creation
+      # Verify that the tag was created and pushed
       - name: Verify Tag Creation
         run: |
+          git fetch --tags
           git tag
+
 
       # Публикуем артефакт в GitHub Releases
       - name: Create GitHub Release
