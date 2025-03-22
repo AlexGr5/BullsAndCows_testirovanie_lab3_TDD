@@ -45,30 +45,8 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-      # Добавим вывод содержимого папки build/libs
-      - name: List files in build/libs
-        run: ls -al build/libs
+      - name: Build Docker image
+        run: docker build -t your-image-name .
 
-      # Create a new tag and push it
-      - name: Create Tag and Push
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git tag v${{ github.run_number }}
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} --follow-tags
-
-      # Verify that the tag was created and pushed
-      - name: Verify Tag Creation
-        run: |
-          git fetch --tags
-          git tag
-
-
-      # Публикуем артефакт в GitHub Releases
-      - name: Create GitHub Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: build/libs/lab3_TDD-1.0-SNAPSHOT.jar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify Docker image
+        run: docker images
