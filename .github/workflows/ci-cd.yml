@@ -2,9 +2,11 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master  # или любая другая ветка
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
   build:
@@ -45,8 +47,25 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-      - name: Build Docker image
-        run: docker build -t my-image .
+      # Логин в Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}  # Логин для Docker Hub
+          password: ${{ secrets.DOCKER_PASSWORD }}  # Токен для Docker Hub
 
+      # Сборка Docker образа
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }} .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/my-repo:latest
+
+      # Пуш Docker образа в Docker Hub
+      - name: Push Docker image
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-repo:latest
+
+      # Проверка собранных Docker образов
       - name: Verify Docker image
         run: docker images
