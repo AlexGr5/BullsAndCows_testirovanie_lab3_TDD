@@ -46,7 +46,7 @@ jobs:
         run: ./gradlew test
 
       - name: Build Docker image
-        run: docker build -t your-image-name .
+        run: docker build -t my-image .
 
       - name: Verify Docker image
         run: docker images
