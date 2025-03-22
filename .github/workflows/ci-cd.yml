@@ -12,6 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    environment: DOCKER  # Указываем, что используем окружение DOCKER
+
     permissions:
       contents: write  # Разрешение на запись в репозиторий
 
