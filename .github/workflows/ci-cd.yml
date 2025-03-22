@@ -1,79 +1,78 @@
-name: Java CI with Gradle
+name: Java CI with Gradle  # Имя работы (название процесса CI)
 
 on:
   push:
     branches:
-      - master  # или любая другая ветка
+      - master  # Работа будет запускаться при пуше в ветку master (или другую ветку)
   pull_request:
     branches:
-      - master
+      - master  # Работа будет запускаться при создании pull request в ветку master
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Работа будет выполняться на виртуальной машине с Ubuntu
 
-    environment: DOCKER  # Указываем, что используем окружение DOCKER
+    environment: DOCKER  # Указываем, что используем окружение с названием DOCKER (например, секреты для Docker)
 
     permissions:
-      contents: write  # Разрешение на запись в репозиторий
+      contents: write  # Разрешение на запись в репозиторий, например, для обновления файлов
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Шаг для клонирования репозитория в рабочую директорию
 
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v3  # Шаг для установки JDK
         with:
-          distribution: 'temurin'
-          java-version: '17'
+          distribution: 'temurin'  # Устанавливаем OpenJDK из Temurin
+          java-version: '17'  # Устанавливаем версию JDK 17
 
       - name: Cache Gradle packages
-        uses: actions/cache@v3
+        uses: actions/cache@v3  # Используем кэширование зависимостей Gradle
         with:
           path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+            ~/.gradle/caches  # Кэш зависимостей Gradle
+            ~/.gradle/wrapper  # Кэш wrapper файлов Gradle
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}  # Ключ для кэширования на основе файлов Gradle
           restore-keys: |
-            ${{ runner.os }}-gradle
+            ${{ runner.os }}-gradle  # Резервные ключи для восстановления кеша
 
       - name: Install Gradle
-        run: sudo apt-get update && sudo apt-get install -y gradle
+        run: sudo apt-get update && sudo apt-get install -y gradle  # Устанавливаем Gradle с помощью apt
 
       - name: Give permissions to gradlew
-        run: chmod +x gradlew
+        run: chmod +x gradlew  # Даем права на выполнение скрипту gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build  # Выполняем сборку проекта с помощью Gradle
 
       - name: Run tests
-        run: ./gradlew test
-
+        run: ./gradlew test  # Запускаем тесты проекта через Gradle
 
       - name: Check if secrets are set
         run: |
-          echo "DOCKER_USERNAME is set: ${{ secrets.DOCKER_USERNAME != '' }}"
-          echo "DOCKER_PASSWORD is set: ${{ secrets.DOCKER_PASSWORD != '' }}"
+          echo "DOCKER_USERNAME is set: ${{ secrets.DOCKER_USERNAME != '' }}"  # Проверяем, задан ли секрет DOCKER_USERNAME
+          echo "DOCKER_PASSWORD is set: ${{ secrets.DOCKER_PASSWORD != '' }}"  # Проверяем, задан ли секрет DOCKER_PASSWORD
 
       # Логин в Docker Hub
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v2  # Шаг для логина в Docker Hub
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}  # Логин для Docker Hub
-          password: ${{ secrets.DOCKER_PASSWORD }}  # Токен для Docker Hub
+          username: ${{ secrets.DOCKER_USERNAME }}  # Логин для Docker Hub, получаем из секретов
+          password: ${{ secrets.DOCKER_PASSWORD }}  # Пароль или токен для Docker Hub, получаем из секретов
 
       # Сборка Docker образа
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }} .
-          docker tag ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/my-repo:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }} .  # Строим Docker образ с уникальным тегом на основе commit hash
+          docker tag ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/my-repo:latest  # Добавляем тег latest для Docker образа
 
       # Пуш Docker образа в Docker Hub
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-repo:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-repo:${{ github.sha }}  # Отправляем образ с уникальным тегом в Docker Hub
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-repo:latest  # Отправляем образ с тегом latest в Docker Hub
 
       # Проверка собранных Docker образов
       - name: Verify Docker image
-        run: docker images
+        run: docker images  # Выводим список всех Docker образов на текущей машине для проверки
